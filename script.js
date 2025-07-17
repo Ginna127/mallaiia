@@ -118,9 +118,9 @@ for (const [semestre, ramos] of Object.entries(malla)) {
   container.appendChild(columna);
 }
 
-// Desbloquea ramos sin requisitos
+// ✅ Desbloquear ramos sin requisitos propios
 for (const ramo in estado) {
-  if (!Object.values(requisitos).flat().includes(ramo)) {
+  if (!requisitos.hasOwnProperty(ramo)) {
     document.getElementById(ramo).classList.remove("bloqueado");
   }
 }
@@ -133,7 +133,7 @@ function aprobar(ramo) {
   estado[ramo] = true;
   el.classList.add("aprobado");
 
-  // Intentar desbloquear ramos que dependían de este
+  // Intentar desbloquear ramos que dependen de este
   for (const [destino, reqs] of Object.entries(requisitos)) {
     if (reqs.includes(ramo)) {
       const cumplidos = reqs.every(r => estado[r]);
