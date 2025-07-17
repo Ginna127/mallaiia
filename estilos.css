@@ -1,92 +1,61 @@
-/* ----- Estructura general ----- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  text-align: center;
-  padding: 30px 20px 10px;
-  background-color: #ffffff;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 30px;
+  font-family: sans-serif;
+  background-color: #fff0f5;
+  padding: 20px;
+  color: #333;
 }
 
 h1 {
-  margin: 0;
-  font-size: 2.2em;
-  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.subtitulo {
-  font-size: 1em;
-  color: #666;
-  margin-top: 10px;
+#malla-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 20px;
 }
 
-main {
-  padding: 0 20px 40px;
-}
-
-/* ----- Semestres ----- */
 .semestre {
-  margin-bottom: 40px;
-  border-top: 2px solid #ccc;
-  padding-top: 20px;
-  border-radius: 8px;
+  flex: 0 0 auto;
+  min-width: 250px;
+  background-color: #ffe6f0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 .semestre h2 {
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 15px;
-  font-size: 1.5em;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background-color: #f7d0e7;
+  border-radius: 6px;
+  padding: 5px;
 }
 
-/* Fondo verde para cada semestre */
-.semestre-bg {
-  background-color: #e0f7e9; /* verde muy suave */
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* ----- Grid de ramos ----- */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
-
-/* ----- Ramos individuales ----- */
 .ramo {
-  background-color: #ffffff;
-  border: 2px solid #ccc;
-  padding: 10px 14px;
-  min-width: 160px;
-  text-align: center;
+  border: 2px solid #cc99b5;
+  background-color: #ffe6f0;
+  padding: 10px;
   border-radius: 10px;
-  cursor: default;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  color: #333;
-  user-select: none;
-}
-
-/* Ramos desbloqueados (clickeables) */
-.ramo.habilitado {
+  text-align: center;
   cursor: pointer;
-  border-color: #2ecc71;
-  box-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+  transition: 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
-/* Ramos aprobados */
+.ramo.bloqueado {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .ramo.aprobado {
-  background-color: #2ecc71;
+  background-color: #f78fb3;
+  border-color: #c44569;
   color: white;
-  border-color: #27ae60;
-  cursor: default;
 }
