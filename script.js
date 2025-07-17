@@ -1,155 +1,149 @@
-// script.js COMPLETO con todos los ramos y dependencias organizados por semestre
+const semestres = {
+  "1° Semestre": [
+    "Precálculo", "Cálculo diferencial", "Física clásica y laboratorio",
+    "Química básica y laboratorio", "Ingeniería industrial, calidad y productividad",
+    "Ética y cultura de la legalidad", "Cultura de género", "Cultura de paz"
+  ],
+  "2° Semestre": [
+    "Cálculo Integral", "Inteligencia emocional y psicología positiva",
+    "Redacción y exposición de temas de ingeniería", "Estática y laboratorio",
+    "Álgebra lineal", "Tecnología informática", "Economía aplicada a los negocios",
+    "Responsabilidad social y desarrollo sustentable", "Liderazgo, emprendimiento e innovación"
+  ],
+  "3° Semestre": [
+    "Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+    "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio",
+    "Termodinámica"
+  ],
+  "4° Semestre": [
+    "Ecuaciones diferenciales", "Automatización industrial", "Introducción a la administración",
+    "Procesos de manufactura", "Circuitos eléctricos y laboratorio", "Modelos determinísticos",
+    "Análisis e interpretación de estados financieros", "Dibujo computarizado"
+  ],
+  "5° Semestre": [
+    "Probabilidad y estadística", "Seguridad y gestión ambiental",
+    "Comportamiento organizacional y liderazgo", "Modelos probabilísticos",
+    "Ingeniería de costos", "Diseño asistido por computadora",
+    "Competencia comunicativa en el idioma inglés", "Optativa I"
+  ],
+  "6° Semestre": [
+    "Estadística y diseño de experimentos", "Estudio del trabajo",
+    "Laboratorio de estudio del trabajo", "Simulación de procesos productivos",
+    "Maquinados y metrología dimensional", "Fundamentos de mercadotecnia",
+    "Optativa II"
+  ],
+  "7° Semestre": [
+    "Administración de capital humano", "Control estadístico del proceso",
+    "Ergonomía y factores humanos", "Planeación y control de las operaciones",
+    "Ingeniería económica", "Sistemas de gestión de calidad"
+  ],
+  "8° Semestre": [
+    "Servicio social", "Inteligencia de negocios", "Gestión del mantenimiento",
+    "Administración de la cadena de suministro", "Administración de proyectos"
+  ],
+  "9° Semestre": [
+    "Localización y diseño de instalaciones", "Estrategia de negocios",
+    "Manufactura de classe mundial", "Derecho laboral",
+    "Optativa del área curricular de formación profesional integradora"
+  ],
+  "10° Semestre": [
+    "Seminario integrador", "Seminario para el desempeño profesional",
+    "Optativa III", "Optativa IV"
+  ]
+};
 
-const ramos = [
-  // --- Primer semestre ---
-  { id: "prec", nombre: "Precálculo", abre: ["calcint", "algebra"], semestre: 1 },
-  { id: "calcdif", nombre: "Cálculo diferencial", abre: ["calcint"], semestre: 1 },
-  { id: "fisica", nombre: "Física clásica y lab", abre: ["estatica"], semestre: 1 },
-  { id: "quimica", nombre: "Química básica y lab", abre: [], semestre: 1 },
-  { id: "calidad", nombre: "Ing. industrial, calidad y prod", abre: [], semestre: 1 },
-  { id: "etica", nombre: "Ética y cultura de la legalidad", abre: [], semestre: 1 },
-  { id: "genero", nombre: "Cultura de género", abre: [], semestre: 1 },
-  { id: "paz", nombre: "Cultura de paz", abre: [], semestre: 1 },
+const dependencias = {
+  "Precálculo": ["Cálculo Integral", "Álgebra lineal"],
+  "Cálculo diferencial": ["Cálculo Integral"],
+  "Física clásica y laboratorio": ["Estática y laboratorio"],
+  "Cálculo Integral": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Inteligencia emocional y psicología positiva": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Redacción y exposición de temas de ingeniería": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Estática y laboratorio": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Álgebra lineal": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Tecnología informática": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Economía aplicada a los negocios": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Responsabilidad social y desarrollo sustentable": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Liderazgo, emprendimiento e innovación": ["Cálculo de funciones multivariables", "Tecnología de materiales", "Programación estructurada",
+                       "Contabilidad financiera", "Dibujo técnico", "Fundamentos de electricidad y laboratorio", "Termodinámica"],
+  "Cálculo de funciones multivariables": ["Ecuaciones diferenciales"],
+  "Tecnología de materiales": ["Procesos de manufactura"],
+  "Contabilidad financiera": ["Análisis e interpretación de estados financieros"],
+  "Dibujo técnico": ["Dibujo computarizado"],
+  "Fundamentos de electricidad y laboratorio": ["Circuitos eléctricos y laboratorio"],
+  "Automatización industrial": ["Maquinados y metrología dimensional"],
+  "Modelos determinísticos": ["Modelos probabilísticos"],
+  "Análisis e interpretación de estados financieros": ["Ingeniería de costos"],
+  "Dibujo computarizado": ["Diseño asistido por computadora"],
+  "Probabilidad y estadística": ["Estadística y diseño de experimentos"],
+  "Modelos probabilísticos": ["Planeación y control de las operaciones"],
+  "Optativa I": ["Optativa II"],
+  "Estadística y diseño de experimentos": ["Control estadístico del proceso", "Inteligencia de negocios"],
+  "Estudio del trabajo": ["Ergonomía y factores humanos", "Planeación y control de las operaciones", "Gestión del mantenimiento"],
+  "Control estadístico del proceso": ["Gestión del mantenimiento"],
+  "Planeación y control de las operaciones": ["Administración de la cadena de suministro", "Manufactura de classe mundial"],
+  "Ingeniería económica": ["Administración de proyectos"],
+  "Sistemas de gestión de calidad": ["Gestión del mantenimiento"],
+  "Administración de proyectos": ["Seminario integrador"],
+  "Localización y diseño de instalaciones": ["Seminario integrador"]
+};
 
-  // --- Segundo semestre ---
-  { id: "calcint", nombre: "Cálculo integral", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "emocion", nombre: "Intelig. emocional", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "redaccion", nombre: "Redacción", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "estatica", nombre: "Estática y lab", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "algebra", nombre: "Álgebra lineal", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "tecinfo", nombre: "Tecnología informática", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "economia", nombre: "Economía aplicada", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "rse", nombre: "Responsabilidad social", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
-  { id: "liderazgo", nombre: "Liderazgo e innovación", abre: ["calcvec", "materiales", "prog", "conta", "dibujo", "electricidad", "termo"], semestre: 2 },
+const estado = {};
+const container = document.getElementById("malla-container");
 
-  // --- Tercer semestre ---
-  { id: "calcvec", nombre: "Cálculo multivariable", abre: ["ecdiff"], semestre: 3 },
-  { id: "materiales", nombre: "Tecnología de materiales", abre: ["manufactura"], semestre: 3 },
-  { id: "prog", nombre: "Programación estructurada", abre: [], semestre: 3 },
-  { id: "conta", nombre: "Contabilidad financiera", abre: ["finanzas"], semestre: 3 },
-  { id: "dibujo", nombre: "Dibujo técnico", abre: ["dibujocad"], semestre: 3 },
-  { id: "electricidad", nombre: "Fund. de electricidad", abre: ["circuitos"], semestre: 3 },
-  { id: "termo", nombre: "Termodinámica", abre: [], semestre: 3 },
+// Crear columnas por semestre
+for (const [nombreSemestre, ramos] of Object.entries(semestres)) {
+  const columna = document.createElement("div");
+  columna.className = "semestre";
+  const titulo = document.createElement("h2");
+  titulo.textContent = nombreSemestre;
+  columna.appendChild(titulo);
 
-  // --- Cuarto semestre ---
-  { id: "ecdiff", nombre: "Ecuaciones diferenciales", abre: [], semestre: 4 },
-  { id: "automat", nombre: "Automatización industrial", abre: ["maquinados"], semestre: 4 },
-  { id: "admin", nombre: "Introducción a la administración", abre: [], semestre: 4 },
-  { id: "manufactura", nombre: "Procesos de manufactura", abre: [], semestre: 4 },
-  { id: "circuitos", nombre: "Circuitos eléctricos y lab", abre: [], semestre: 4 },
-  { id: "modelosdet", nombre: "Modelos determinísticos", abre: ["modelosprob"], semestre: 4 },
-  { id: "finanzas", nombre: "Análisis e interpr. financieros", abre: ["costos"], semestre: 4 },
-  { id: "dibujocad", nombre: "Dibujo computarizado", abre: ["cad"], semestre: 4 },
-
-  // --- Quinto semestre ---
-  { id: "prob", nombre: "Probabilidad y estadística", abre: ["experimentos"], semestre: 5 },
-  { id: "seguridad", nombre: "Seguridad y gestión ambiental", abre: [], semestre: 5 },
-  { id: "comportamiento", nombre: "Comportamiento organizacional", abre: [], semestre: 5 },
-  { id: "modelosprob", nombre: "Modelos probabilísticos", abre: ["planeacion"], semestre: 5 },
-  { id: "costos", nombre: "Ingeniería de costos", abre: [], semestre: 5 },
-  { id: "cad", nombre: "Diseño asistido por computadora", abre: [], semestre: 5 },
-  { id: "ingles", nombre: "Competencia comunicativa inglés", abre: [], semestre: 5 },
-  { id: "opt1", nombre: "Optativa I", abre: ["opt2"], semestre: 5 },
-
-  // --- Sexto semestre ---
-  { id: "experimentos", nombre: "Estadística y diseño de experimentos", abre: ["control", "inteligencia"], semestre: 6 },
-  { id: "estudio", nombre: "Estudio del trabajo", abre: ["ergonomia", "planeacion", "mantenimiento"], semestre: 6 },
-  { id: "labestudio", nombre: "Lab estudio del trabajo", abre: [], semestre: 6 },
-  { id: "simulacion", nombre: "Simulación de procesos", abre: [], semestre: 6 },
-  { id: "maquinados", nombre: "Maquinados y metrología", abre: [], semestre: 6 },
-  { id: "mercadotecnia", nombre: "Fund. de mercadotecnia", abre: [], semestre: 6 },
-  { id: "opt2", nombre: "Optativa II", abre: [], semestre: 6 },
-
-  // --- Séptimo semestre ---
-  { id: "capitalhumano", nombre: "Administración de capital humano", abre: [], semestre: 7 },
-  { id: "control", nombre: "Control estadístico del proceso", abre: ["mantenimiento"], semestre: 7 },
-  { id: "ergonomia", nombre: "Ergonomía y factores humanos", abre: [], semestre: 7 },
-  { id: "planeacion", nombre: "Planeación y control de ops", abre: ["suministro", "clase"], semestre: 7 },
-  { id: "economica", nombre: "Ingeniería económica", abre: ["proyectos"], semestre: 7 },
-  { id: "calidad", nombre: "Sistemas de gestión de calidad", abre: ["mantenimiento"], semestre: 7 },
-
-  // --- Octavo semestre ---
-  { id: "servicio", nombre: "Servicio social", abre: [], semestre: 8 },
-  { id: "inteligencia", nombre: "Inteligencia de negocios", abre: [], semestre: 8 },
-  { id: "mantenimiento", nombre: "Gestión del mantenimiento", abre: [], semestre: 8 },
-  { id: "suministro", nombre: "Administración cadena de suministro", abre: [], semestre: 8 },
-  { id: "proyectos", nombre: "Administración de proyectos", abre: ["seminario"], semestre: 8 },
-
-  // --- Noveno semestre ---
-  { id: "localizacion", nombre: "Localización y diseño instalaciones", abre: ["seminario"], semestre: 9 },
-  { id: "estrategia", nombre: "Estrategia de negocios", abre: [], semestre: 9 },
-  { id: "clase", nombre: "Manufactura de clase mundial", abre: [], semestre: 9 },
-  { id: "derecho", nombre: "Derecho laboral", abre: [], semestre: 9 },
-  { id: "optcurri", nombre: "Optativa profesional integradora", abre: [], semestre: 9 },
-
-  // --- Décimo semestre ---
-  { id: "seminario", nombre: "Seminario integrador", abre: [], semestre: 10 },
-  { id: "desempeno", nombre: "Seminario desempeño profesional", abre: [], semestre: 10 },
-  { id: "opt3", nombre: "Optativa III", abre: [], semestre: 10 },
-  { id: "opt4", nombre: "Optativa IV", abre: [], semestre: 10 }
-];
-
-const aprobados = new Set();
-
-function crearMalla() {
-  const container = document.getElementById("malla");
-  const semestres = {};
-
-  // Agrupar ramos por semestre
-  ramos.forEach(r => {
-    if (!semestres[r.semestre]) {
-      semestres[r.semestre] = [];
-    }
-    semestres[r.semestre].push(r);
+  ramos.forEach(ramo => {
+    const div = document.createElement("div");
+    div.className = "ramo bloqueado";
+    div.textContent = ramo;
+    div.id = ramo;
+    div.onclick = () => aprobar(ramo);
+    columna.appendChild(div);
+    estado[ramo] = false;
   });
 
-  // Crear secciones por semestre
-  Object.keys(semestres).sort((a, b) => a - b).forEach(sem => {
-    const section = document.createElement("div");
-    section.className = "semestre";
+  container.appendChild(columna);
+}
 
-    const title = document.createElement("h2");
-    title.textContent = `Semestre ${sem}`;
-    section.appendChild(title);
+// Desbloquear los ramos sin requisitos
+const ramosConRequisitos = Object.values(dependencias).flat();
+Object.keys(estado).forEach(ramo => {
+  if (!ramosConRequisitos.includes(ramo)) desbloquear(ramo);
+});
 
-    const grid = document.createElement("div");
-    grid.className = "grid";
+function desbloquear(ramo) {
+  const el = document.getElementById(ramo);
+  if (el) el.classList.remove("bloqueado");
+}
 
-    semestres[sem].forEach(ramo => {
-      const div = document.createElement("div");
-      div.className = "ramo";
-      div.id = ramo.id;
-      div.textContent = ramo.nombre;
-      div.onclick = () => aprobarRamo(ramo.id);
-      grid.appendChild(div);
+function aprobar(ramo) {
+  const el = document.getElementById(ramo);
+  if (!el || el.classList.contains("bloqueado") || estado[ramo]) return;
+  estado[ramo] = true;
+  el.classList.add("aprobado");
+
+  for (const [requisito, dependientes] of Object.entries(dependencias)) {
+    dependientes.forEach(destino => {
+      const requisitos = Object.entries(dependencias)
+        .filter(([, list]) => list.includes(destino))
+        .map(([req]) => req);
+      const todosAprobados = requisitos.every(r => estado[r]);
+      if (todosAprobados) desbloquear(destino);
     });
-
-    section.appendChild(grid);
-    container.appendChild(section);
-  });
-
-  actualizarEstado();
+  }
 }
-
-function aprobarRamo(id) {
-  if (!document.getElementById(id).classList.contains("habilitado")) return;
-  aprobados.add(id);
-  document.getElementById(id).classList.add("aprobado");
-  actualizarEstado();
-}
-
-function actualizarEstado() {
-  const desbloqueados = new Set();
-
-  ramos.forEach(r => {
-    if (!aprobados.has(r.id)) {
-      const prereqs = ramos.filter(x => x.abre.includes(r.id)).map(x => x.id);
-      const cumplidos = prereqs.every(p => aprobados.has(p));
-      if (prereqs.length === 0 || cumplidos) desbloqueados.add(r.id);
-    }
-  });
-
-  ramos.forEach(r => {
-    const elem = document.getElementById(r.id);
-    if (aprobados.has(r.id)) {
-      elem.classList
