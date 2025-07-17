@@ -1,3 +1,11 @@
+/* ----- Estructura general ----- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
 header {
   text-align: center;
   padding: 30px 20px 10px;
@@ -19,5 +27,66 @@ h1 {
 }
 
 main {
-  padding: 0 20px;
+  padding: 0 20px 40px;
+}
+
+/* ----- Semestres ----- */
+.semestre {
+  margin-bottom: 40px;
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+  border-radius: 8px;
+}
+
+.semestre h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+/* Fondo verde para cada semestre */
+.semestre-bg {
+  background-color: #e0f7e9; /* verde muy suave */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ----- Grid de ramos ----- */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ----- Ramos individuales ----- */
+.ramo {
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  padding: 10px 14px;
+  min-width: 160px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: default;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  color: #333;
+  user-select: none;
+}
+
+/* Ramos desbloqueados (clickeables) */
+.ramo.habilitado {
+  cursor: pointer;
+  border-color: #2ecc71;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+}
+
+/* Ramos aprobados */
+.ramo.aprobado {
+  background-color: #2ecc71;
+  color: white;
+  border-color: #27ae60;
+  cursor: default;
 }
